@@ -15,12 +15,12 @@ export class ProductsListComponent {
   private cartService = inject(CartService);
 
   public products = signal<Product[]>([]);
-  public loading = signal(false);
+  public loading = signal<boolean>(false);
 
-  public search = signal('');
-  public category = signal('All');
+  public search = signal<string>('');
+  public category = signal<string>('All');
 
-  public filteredProducts = computed(() => {
+  public filteredProducts = computed<Product[]>(() => {
     return this.products().filter(product => {
 
       const searchMatch =
@@ -44,7 +44,7 @@ export class ProductsListComponent {
     this.loading.set(true);
 
     this.productService.getProducts().subscribe({
-      next: (data) => {
+      next: (data:Product[]) => {
         this.products.set(data);
         this.loading.set(false);
       },

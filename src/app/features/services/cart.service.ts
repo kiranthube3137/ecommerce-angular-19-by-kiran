@@ -12,11 +12,11 @@ export class CartService {
 
   private toastService = inject(ToastService);
 
-  public totalItems = computed(() =>
+  public totalItems = computed<number>(() =>
     this.cartItems().length
   );
 
-  public grandTotal = computed(() =>
+  public grandTotal = computed<number>(() =>
     this.cartItems().reduce(
       (total, item) => total + item.price * item.quantity,
       0
@@ -25,9 +25,9 @@ export class CartService {
 
   public addToCart(product: Product): void {
 
-    const cart = [...this.cartItems()];
+    const cart: CartItem[] = [...this.cartItems()];
 
-    const existingProduct = cart.find(
+    const existingProduct: CartItem | undefined = cart.find(
       item => item.id === product.id
     );
 
@@ -60,7 +60,7 @@ export class CartService {
 
     const cart = [...this.cartItems()];
 
-    const item = cart.find(x => x.id === id);
+    const item: CartItem | undefined = cart.find(x => x.id === id);
 
     if (item) {
       item.quantity++;

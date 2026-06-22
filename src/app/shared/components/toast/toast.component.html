@@ -1,0 +1,16 @@
+@if(toastService.show()) {
+
+<div
+  class="fixed top-5 left-1/2 -translate-x-1/2 z-50
+         min-w-[300px] px-6 py-3 rounded-lg shadow-lg
+         text-white text-center font-medium
+         transition-all duration-300"
+  [class.bg-green-500]="toastService.type() === 'success'"
+  [class.bg-red-500]="toastService.type() === 'error'"
+>
+
+  {{ toastService.message() }}
+
+</div>
+
+}

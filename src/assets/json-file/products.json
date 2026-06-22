@@ -1,0 +1,72 @@
+ [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 50000,
+      "image": "assets/images/laptop.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 2,
+      "name": "Shoes",
+      "price": 3000,
+      "image": "assets/images/shoes.jpg",
+      "category": "Fashion"
+    },
+    {
+      "id": 3,
+      "name": "Smartphone",
+      "price": 25000,
+      "image": "assets/images/mobile.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 4,
+      "name": "Headphones",
+      "price": 2500,
+      "image": "assets/images/headphone.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 5,
+      "name": "Smart Watch",
+      "price": 4500,
+      "image": "assets/images/watch.jpg",
+      "category": "Electronics"
+    },
+    {
+      "id": 6,
+      "name": "T-Shirt",
+      "price": 800,
+      "image": "assets/images/t-shirt.jpg",
+      "category": "Fashion"
+    },
+    {
+      "id": 7,
+      "name": "Jeans",
+      "price": 1800,
+      "image": "assets/images/jeans.jpg",
+      "category": "Fashion"
+    },
+    {
+      "id": 8,
+      "name": "Office Chair",
+      "price": 6500,
+      "image": "assets/images/chair.jpg",
+      "category": "Home"
+    },
+    {
+      "id": 9,
+      "name": "Study Table",
+      "price": 8500,
+      "image": "assets/images/table.jpg",
+      "category": "Home"
+    },
+    {
+      "id": 10,
+      "name": "Backpack",
+      "price": 1200,
+      "image": "assets/images/bag.jpg",
+      "category": "Fashion"
+    }
+  ]

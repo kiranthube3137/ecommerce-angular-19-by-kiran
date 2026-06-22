@@ -1,0 +1,45 @@
+<nav class="bg-blue-600 text-white shadow-md">
+
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <h1
+      class="text-xl font-bold cursor-pointer"
+      routerLink="/products"
+    >
+      E-Commerce Store
+    </h1>
+
+    <!-- Navigation Links -->
+    <div class="flex items-center gap-6">
+
+      <a
+        routerLink="/products"
+        routerLinkActive="text-yellow-300 font-bold border-b-2 border-yellow-300"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="hover:text-gray-200 pb-1 transition cursor-pointer"
+      >
+        Products
+      </a>
+
+      <a
+        routerLink="/cart"
+        routerLinkActive="text-yellow-300 font-bold border-b-2 border-yellow-300"
+        class="hover:text-gray-200 pb-1 transition cursor-pointer"
+      >
+       Cart ({{ cartService.totalItems() }})
+      </a>
+
+      <a
+        routerLink="/contact"
+        routerLinkActive="text-yellow-300 font-bold border-b-2 border-yellow-300"
+        class="hover:text-gray-200 pb-1 transition cursor-pointer"
+      >
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>

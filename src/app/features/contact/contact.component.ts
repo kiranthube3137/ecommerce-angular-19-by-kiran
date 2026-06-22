@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+
 @Component({
   selector: 'app-contact',
   imports: [ReactiveFormsModule],
@@ -12,7 +13,8 @@ import {
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
-contactForm: FormGroup;
+
+  public contactForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
@@ -27,7 +29,14 @@ contactForm: FormGroup;
         ]
       ],
 
-      phone: ['', [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10)
+        ]
+      ],
 
       message: [
         '',
@@ -39,14 +48,12 @@ contactForm: FormGroup;
     });
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
 
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
       return;
     }
-
-    console.log(this.contactForm.value);
 
     alert('Message submitted successfully');
 

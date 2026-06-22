@@ -6,126 +6,105 @@
       Contact Us
     </h2>
 
-    <form
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
-      class="space-y-4"
-    >
+    <form [formGroup]="contactForm" class="space-y-4">
 
       <!-- Name -->
       <div>
-        <input
-          type="text"
-          placeholder="Name"
-          formControlName="name"
-          class="w-full border rounded-lg px-4 py-2"
-        />
+        <input type="text" placeholder="Name" formControlName="name" class="w-full border rounded-lg px-4 py-2" />
 
         @if(contactForm.get('name')?.touched &&
-            contactForm.get('name')?.hasError('required')) {
+        contactForm.get('name')?.hasError('required')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Name is required
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Name is required
+        </p>
 
         }
       </div>
 
       <!-- Email -->
       <div>
-        <input
-          type="email"
-          placeholder="Email"
-          formControlName="email"
-          class="w-full border rounded-lg px-4 py-2"
-        />
+        <input type="email" placeholder="Email" formControlName="email" class="w-full border rounded-lg px-4 py-2" />
 
         @if(contactForm.get('email')?.touched &&
-            contactForm.get('email')?.hasError('required')) {
+        contactForm.get('email')?.hasError('required')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Email is required
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Email is required
+        </p>
 
         }
 
         @if(contactForm.get('email')?.touched &&
-            contactForm.get('email')?.hasError('email')) {
+        contactForm.get('email')?.hasError('email')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Please enter a valid email
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Please enter a valid email
+        </p>
 
         }
       </div>
 
       <!-- Phone -->
       <div>
-        <input
-          type="text"
-          placeholder="Phone"
-          formControlName="phone"
-          class="w-full border rounded-lg px-4 py-2"
-        />
+        <input type="text" placeholder="Phone" formControlName="phone" class="w-full border rounded-lg px-4 py-2" />
 
         @if(contactForm.get('phone')?.touched &&
-            contactForm.get('phone')?.hasError('required')) {
+        contactForm.get('phone')?.hasError('required')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Phone number is required
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Phone number is required
+        </p>
 
         }
         @if(contactForm.get('phone')?.touched &&
-            contactForm.get('phone')?.hasError('minlength')) {
+        contactForm.get('phone')?.hasError('minlength')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Phone number must be  10 Digits
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Phone number must be 10 Digits
+        </p>
 
         }
         @if(contactForm.get('phone')?.touched &&
-            contactForm.get('phone')?.hasError('maxlength')) {
+        contactForm.get('phone')?.hasError('maxlength')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Phone number must be  10 Digits
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Phone number must be 10 Digits
+        </p>
 
         }
       </div>
 
       <!-- Message -->
       <div>
-        <textarea
-          rows="5"
-          placeholder="Message"
-          formControlName="message"
-          class="w-full border rounded-lg px-4 py-2"
-        ></textarea>
+        <textarea rows="5" placeholder="Message" formControlName="message"
+          class="w-full border rounded-lg px-4 py-2"></textarea>
 
         @if(contactForm.get('message')?.touched &&
-            contactForm.get('message')?.hasError('required')) {
+        contactForm.get('message')?.hasError('required')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Message is required
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Message is required
+        </p>
 
         }
 
         @if(contactForm.get('message')?.touched &&
-            contactForm.get('message')?.hasError('minlength')) {
+        contactForm.get('message')?.hasError('minlength')) {
 
-          <p class="text-red-500 text-sm mt-1">
-            Message must be at least 10 characters
-          </p>
+        <p class="text-red-500 text-sm mt-1">
+          Message must be at least 10 characters
+        </p>
 
         }
       </div>
 
-      <button
-        type="submit"
-        class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 cursor-pointer"
-      >
+      <button type="submit" [disabled]="contactForm.invalid" class="w-full bg-blue-600 text-white py-3 rounded-lg
+              hover:bg-blue-700
+              disabled:bg-gray-400
+              disabled:cursor-not-allowed
+              disabled:hover:bg-gray-400
+              cursor-pointer">
         Submit
       </button>
 

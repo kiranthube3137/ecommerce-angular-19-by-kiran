@@ -10,35 +10,17 @@ import { CartService } from '../services/cart.service';
   styleUrl: './products-list.component.css'
 })
 export class ProductsListComponent {
- private productService = inject(ProductService);
- private cartService = inject(CartService);
-  products = signal<Product[]>([]);
-  loading = signal(false);
 
-  search = signal('');
-  category = signal('All');
+  private productService = inject(ProductService);
+  private cartService = inject(CartService);
 
-  ngOnInit(): void {
-    this.loadProducts();
-  }
+  public products = signal<Product[]>([]);
+  public loading = signal(false);
 
-  loadProducts(): void {
+  public search = signal('');
+  public category = signal('All');
 
-    this.loading.set(true);
-
-    this.productService.getProducts().subscribe({
-      next: (data) => {
-        this.products.set(data);
-        this.loading.set(false);
-      },
-      error: (error) => {
-        console.error(error);
-        this.loading.set(false);
-      }
-    });
-  }
-
-  filteredProducts = computed(() => {
+  public filteredProducts = computed(() => {
     return this.products().filter(product => {
 
       const searchMatch =
@@ -54,8 +36,26 @@ export class ProductsListComponent {
     });
   });
 
-  addToCart(product: Product): void {
-      this.cartService.addToCart(product);
+  public ngOnInit(): void {
+    this.loadProducts();
   }
-  
+
+  private loadProducts(): void {
+    this.loading.set(true);
+
+    this.productService.getProducts().subscribe({
+      next: (data) => {
+        this.products.set(data);
+        this.loading.set(false);
+      },
+      error: (error) => {
+        console.error(error);
+        this.loading.set(false);
+      }
+    });
+  }
+
+  public addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+  }
 }

@@ -10,5 +10,5 @@ import { CartService } from '../../../features/services/cart.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-cartService = inject(CartService);
+protected cartService = inject(CartService);
 }

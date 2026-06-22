@@ -9,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
- cartService = inject(CartService);
+ protected cartService = inject(CartService);
 }

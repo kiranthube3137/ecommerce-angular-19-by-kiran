@@ -8,53 +8,55 @@ import { ToastService } from '../../shared/services/toast.service';
 })
 export class CartService {
 
-  cartItems = signal<CartItem[]>(this.getStoredCart());
-   private toastService = inject(ToastService);
-  totalItems = computed(() =>
-     this.cartItems().length
+  public cartItems = signal<CartItem[]>(this.getStoredCart());
+
+  private toastService = inject(ToastService);
+
+  public totalItems = computed(() =>
+    this.cartItems().length
   );
 
-  grandTotal = computed(() =>
+  public grandTotal = computed(() =>
     this.cartItems().reduce(
       (total, item) => total + item.price * item.quantity,
       0
     )
   );
 
-  addToCart(product: Product): void {
+  public addToCart(product: Product): void {
 
-  const cart = [...this.cartItems()];
+    const cart = [...this.cartItems()];
 
-  const existingProduct = cart.find(
-    item => item.id === product.id
-  );
-
-  if (existingProduct) {
-
-    this.toastService.showToast(
-      'Item already added to cart',
-      'error'
+    const existingProduct = cart.find(
+      item => item.id === product.id
     );
 
-    return;
+    if (existingProduct) {
+
+      this.toastService.showToast(
+        'Item already added to cart',
+        'error'
+      );
+
+      return;
+    }
+
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+
+    this.cartItems.set(cart);
+
+    this.saveCart();
+
+    this.toastService.showToast(
+      'Product added successfully',
+      'success'
+    );
   }
 
-  cart.push({
-    ...product,
-    quantity: 1
-  });
-
-  this.cartItems.set(cart);
-
-  this.saveCart();
-
-  this.toastService.showToast(
-    'Product added successfully',
-    'success'
-  );
-}
-
-  increaseQuantity(id: number): void {
+  public increaseQuantity(id: number): void {
 
     const cart = [...this.cartItems()];
 
@@ -65,43 +67,44 @@ export class CartService {
     }
 
     this.cartItems.set(cart);
+
+    this.saveCart();
+  }
+
+  public decreaseQuantity(id: number): void {
+
+    const cart = [...this.cartItems()];
+
+    const item = cart.find(x => x.id === id);
+
+    if (!item) {
+      return;
+    }
+
+    if (item.quantity === 1) {
+
+      this.cartItems.set(
+        cart.filter(x => x.id !== id)
+      );
+
+      this.saveCart();
+
+      this.toastService.showToast(
+        'Product removed from cart',
+        'success'
+      );
+
+      return;
+    }
+
+    item.quantity--;
+
+    this.cartItems.set(cart);
+
     this.saveCart();
   }
 
- decreaseQuantity(id: number): void {
-
-  const cart = [...this.cartItems()];
-
-  const item = cart.find(x => x.id === id);
-
-  if (!item) {
-    return;
-  }
-
-  if (item.quantity === 1) {
-
-    this.cartItems.set(
-      cart.filter(x => x.id !== id)
-    );
-
-    this.saveCart();
-
-    this.toastService.showToast(
-      'Product removed from cart',
-      'success'
-    );
-
-    return;
-  }
-
-  item.quantity--;
-
-  this.cartItems.set(cart);
-
-  this.saveCart();
-}
-
-  removeProduct(id: number): void {
+  public removeProduct(id: number): void {
 
     this.cartItems.set(
       this.cartItems().filter(item => item.id !== id)

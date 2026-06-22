@@ -17,9 +17,9 @@ A simple E-Commerce application built with Angular 19 using Standalone Component
 
 ## Technologies
 
-* Angular 19
-* Tailwind CSS
-* TypeScript
+* Angular (version-19)
+* Tailwind CSS (version-4.3.1)
+* TypeScript (version-5.7.2)
 * Signals
 * Reactive Forms
 * Lazy Loaded Routes
@@ -28,7 +28,6 @@ A simple E-Commerce application built with Angular 19 using Standalone Component
 ## Setup
 npm install
 ng serve
-```
 
 Open: http://localhost:4200
 
